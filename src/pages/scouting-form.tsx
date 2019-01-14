@@ -1,11 +1,16 @@
 import React from "react"
 import { css } from "@emotion/core"
-import Layout from "../components/layout"
 import Form from "../components/form-components/form-template"
-import { fields } from "../utils/game-values"
+import { fields } from "../utils/game-constants"
 export default () => (
-  <Layout>
-    <h1>Scouting Form</h1>
+  <>
+    <h1
+      css={css`
+        text-align: center;
+      `}
+    >
+      Scouting Form
+    </h1>
     <Form fields={fields} />
-  </Layout>
+  </>
 )

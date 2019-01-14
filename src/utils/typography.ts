@@ -1,8 +1,8 @@
 import Typography from "typography"
 //@ts-ignore
-import kirkhamTheme from "typography-theme-kirkham"
+import oceanBeachTheme from "typography-theme-ocean-beach"
 
-const typography = new Typography(kirkhamTheme)
+const typography = new Typography(oceanBeachTheme)
 
 export default typography
 export const rhythm = typography.rhythm

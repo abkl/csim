@@ -5,13 +5,11 @@ import React from "react"
 interface HeaderProps {
   siteTitle: string
 }
-const Header = ({ siteTitle }: HeaderProps) => (
+const AppBar = ({ siteTitle }: HeaderProps) => (
   <div
-    css={css`
-      background: linear-gradient(90deg, #d26ac2, #46c9e5);
-      margin-bottom: 1.45rem;
-      padding: ${rhythm(1)};
-      padding-top: ${rhythm(1.5)};
+    css={theme => css`
+      padding: ${rhythm(1 / 5)};
+      background-color: ${theme.primary.red};
     `}
   >
     <h1
@@ -19,14 +17,18 @@ const Header = ({ siteTitle }: HeaderProps) => (
         display: inline-block;
         font-style: normal;
         padding-left: ${rhythm(1)};
+        text-decoration: none;
+        margin-top: ${rhythm(1)};
       `}
     >
       <Link
+        css={css`
+          text-decoration: none;
+          background-image: none;
+          text-shadow: none;
+          color: white;
+        `}
         to="/"
-        css={{
-          color: `black`,
-          textDecoration: `none`,
-        }}
       >
         {siteTitle}
       </Link>
@@ -34,4 +36,4 @@ const Header = ({ siteTitle }: HeaderProps) => (
   </div>
 )
 
-export default Header
+export default AppBar

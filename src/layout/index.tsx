@@ -1,8 +1,10 @@
 import React from "react"
+import { ThemeProvider } from "emotion-theming"
+import theme from "../utils/theme"
 import { css } from "@emotion/core"
 import { StaticQuery, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
-import AppBar from "./app-bar"
+import AppBar from "../components/app-bar"
 
 const Layout = ({ children }: LayoutProps) => (
   <StaticQuery
@@ -16,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => (
       }
     `}
     render={data => (
-      <>
+      <ThemeProvider theme={theme}>
         <AppBar siteTitle={data.site.siteMetadata.title} />
         <div
           css={css`
@@ -27,7 +29,7 @@ const Layout = ({ children }: LayoutProps) => (
         >
           {children}
         </div>
-      </>
+      </ThemeProvider>
     )}
   />
 )

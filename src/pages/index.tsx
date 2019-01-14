@@ -1,11 +1,10 @@
 import React from "react"
 import Button from "../components/button"
-import { Link } from "gatsby"
-import Layout from "../components/layout"
+import Link from "../components/link"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
-  <Layout>
+  <>
     <SEO
       title="Home"
       description="Scouting Application for Team 4159"
@@ -13,10 +12,8 @@ const IndexPage = () => (
     />
     <h1>Hello guys!</h1>
     <p>Welcolme to the 2019 Scouting Application</p>
-    <Link to="/scouting-form">
-      <Button>Scouting Form</Button>
-    </Link>
-  </Layout>
+    <Link to="/scouting-form">Scouting Form</Link>
+  </>
 )
 
 export default IndexPage

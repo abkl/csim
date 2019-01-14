@@ -1,44 +1,67 @@
 import * as Yup from "yup"
-export const initiallizeFormState = (
-  fields: string[]
-): { [s: string]: string } =>
-  fields.reduce((state, field) => {
-    if (/^Number/.test(field)) {
+import { Fields, FieldType } from "../../utils/game-constants"
+export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
+  Object.keys(fields)
+    .map(f => fields[f]) //map out the fields into [[fields]]
+    .reduce((acc, val) => acc.concat(val), []) //flattens the array
+    .reduce((state, field) => {
+      if (typeof field === "object") {
+        switch (field["type"]) {
+          case "Number":
+            return {
+              ...state,
+              [field["field-name"]]: 0,
+            }
+          case "Radio":
+            return {
+              ...state,
+              [field["field-name"]]: field!["options"]![0],
+            }
+          case "Switch":
+            return {
+              ...state,
+              [field["field-name"]]: false,
+            }
+          default:
+            return {
+              ...state,
+            }
+        }
+      }
       return {
         ...state,
-        [field]: "0",
+        [field as string]: "",
       }
-    } else {
-      return {
-        ...state,
-        [field]: "",
-      }
-    }
-  }, {})
+    }, {}) // initializes the form state
 
-export const createValidateObject = (fields: string[]) => {
-  const shape = fields.reduce(
-    (vobj, field) =>
-      /^Number/.test(field)
-        ? {
-            ...vobj,
-            [field]: Yup.number().min(0, "Number can't be negative"),
-            "Robot Deadtime": Yup.string().required(
-              "Please select one of the options"
-            ),
-            "Scouter Name": Yup.string().required("Please Enter Your Name"),
-            comments: Yup.string(),
-          }
-        : {
-            ...vobj,
-            [field]: Yup.string(),
-            "Robot Deadtime": Yup.string().required(
-              "Please select one of the options"
-            ),
-            "Scouter Name": Yup.string().required("Please Enter Your Name"),
-            comments: Yup.string(),
-          },
-    {}
-  )
+export const createValidateObject = (fields: Fields) => {
+  const shape = Object.keys(fields)
+    .map(f => fields[f])
+    .reduce((acc, val) => acc.concat(val), [])
+    .reduce((vobj, field) => {
+      if (typeof field === "object") {
+        switch (field.type) {
+          case "Number":
+            return {
+              ...vobj,
+              [field["field-name"]]: Yup.number().min(0),
+            }
+          case "Radio":
+            return {
+              ...vobj,
+              [field["field-name"]]: Yup.string().required(),
+            }
+          case "Switch":
+            return {
+              ...vobj,
+              [field["field-name"]]: Yup.boolean().required(),
+            }
+        }
+      }
+      return {
+        ...vobj,
+        [field as string]: "",
+      }
+    }, {})
   return Yup.object().shape(shape)
 }
