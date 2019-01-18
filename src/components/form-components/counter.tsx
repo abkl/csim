@@ -1,5 +1,5 @@
 import React from "react"
-import Button from "../button"
+import Button from "../primatives/button"
 import css from "@emotion/css"
 interface CounterProps {
   onChange: (v: any) => void

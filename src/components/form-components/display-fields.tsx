@@ -9,11 +9,7 @@ interface DisplayFieldsProps {
   setFieldValue: (field: string, value: any) => void
   values: any
 }
-export const DisplayFields = ({
-  fields,
-  setFieldValue,
-  values,
-}: DisplayFieldsProps) => (
+export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
   <>
     {fields
       .filter(f => typeof f === "string")
@@ -22,6 +18,7 @@ export const DisplayFields = ({
           css={css`
             padding-bottom: 15px;
           `}
+          key={f as string}
         >
           <Field name={f} placeholder={f} />
           <br />
@@ -63,7 +60,9 @@ export const DisplayRadio = (props: FieldProps & { options: string[] }) => (
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 50%;
+      width: 100%;
+      color: blue;
+      max-width: 300px;
       align-self: center;
     `}
   >

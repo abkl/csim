@@ -1,6 +1,6 @@
 import React from "react"
-import Button from "../components/button"
-import Link from "../components/link"
+import Button from "../components/primatives/button"
+import Link from "../components/primatives/link"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
@@ -13,6 +13,7 @@ const IndexPage = () => (
     <h1>Hello guys!</h1>
     <p>Welcolme to the 2019 Scouting Application</p>
     <Link to="/scouting-form">Scouting Form</Link>
+    <Link to="/teams"> Teams </Link>
   </>
 )
 
