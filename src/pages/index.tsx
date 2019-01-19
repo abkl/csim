@@ -13,7 +13,6 @@ const IndexPage = () => (
     <h1>Hello guys!</h1>
     <p>Welcolme to the 2019 Scouting Application</p>
     <Link to="/scouting-form">Scouting Form</Link>
-    <Link to="/teams"> Teams </Link>
   </>
 )
 

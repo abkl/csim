@@ -7,6 +7,7 @@ import DisplayFields from "./display-fields"
 import { Fields } from "../../utils/game-constants"
 import { rhythm } from "../../utils/typography"
 import Modal from "../primatives/modal"
+import DisplayValues from "./display-values"
 
 export default ({ fields }: { fields: Fields }) => {
   const [modalState, setModalState] = useState(false)
@@ -71,11 +72,11 @@ export default ({ fields }: { fields: Fields }) => {
               Confirm
             </Button>
             {modalState && (
-              <Modal
-                title="hello"
-                values={props.values}
-                onClose={() => setModalState(false)}
-              />
+              <Modal onClose={() => setModalState(false)}>
+                <h1> Confirm </h1>
+                <DisplayValues values={props.values} />
+                <Button type="submit"> Submit </Button>
+              </Modal>
             )}
           </form>
         )}

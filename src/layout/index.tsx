@@ -22,7 +22,6 @@ const Layout = ({ children }: LayoutProps) => (
         <AppBar siteTitle={data.site.siteMetadata.title} />
         <div
           css={css`
-            margin: 0 auto;
             padding: ${rhythm(2)};
             padding-top: ${rhythm(1.5)};
           `}

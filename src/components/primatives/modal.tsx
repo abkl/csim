@@ -1,18 +1,6 @@
 import React, { useEffect, useRef, useLayoutEffect } from "react"
 import styled from "@emotion/styled"
 
-// Components
-const DisplayValues = ({ values }: { values: { [s: string]: string } }) => (
-  <div css={{ margin: "1rem 0", overflow: "scroll", fontSize: ".65rem" }}>
-    {Object.keys(values).map(key => (
-      <React.Fragment key={key}>
-        <p>
-          {key}: {values[key]}
-        </p>
-      </React.Fragment>
-    ))}
-  </div>
-)
 const ModalOverlay = styled.div`
   align-items: center;
   justify-content: center;
@@ -68,23 +56,18 @@ function useLockBodyScroll() {
   }, []) // Empty array ensures effect is only run on mount and unmount
 }
 export default ({
-  title,
-  values,
   onClose,
+  children,
 }: {
-  title: string
-  values: { [s: string]: string }
   onClose: () => void
+  children: React.ReactNode
 }) => {
   const ref = useRef(null)
   useOnClickOutside(ref, () => onClose())
   useLockBodyScroll()
   return (
     <ModalOverlay>
-      <Modal ref={ref}>
-        <h2>{title}</h2>
-        <DisplayValues values={values} />
-      </Modal>
+      <Modal ref={ref}>{children}</Modal>
     </ModalOverlay>
   )
 }
