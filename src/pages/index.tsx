@@ -1,6 +1,6 @@
 import React from "react"
-import Button from "../components/button"
-import Link from "../components/link"
+import Button from "../components/primatives/button"
+import Link from "../components/primatives/link"
 import SEO from "../components/seo"
 
 const IndexPage = () => (

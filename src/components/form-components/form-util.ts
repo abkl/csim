@@ -1,5 +1,5 @@
 import * as Yup from "yup"
-import { Fields, FieldType } from "../../utils/game-constants"
+import { Fields, FieldType, fields } from "../../utils/game-constants"
 export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
   Object.keys(fields)
     .map(f => fields[f]) //map out the fields into [[fields]]

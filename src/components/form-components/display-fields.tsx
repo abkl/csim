@@ -1,7 +1,8 @@
 import React from "react"
 import Counter from "./counter"
-import { Field, FieldProps } from "formik"
+import { Field } from "formik"
 import { FieldType } from "../../utils/game-constants"
+import Radio from "./radio"
 import css from "@emotion/css"
 
 interface DisplayFieldsProps {
@@ -9,11 +10,7 @@ interface DisplayFieldsProps {
   setFieldValue: (field: string, value: any) => void
   values: any
 }
-export const DisplayFields = ({
-  fields,
-  setFieldValue,
-  values,
-}: DisplayFieldsProps) => (
+export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
   <>
     {fields
       .filter(f => typeof f === "string")
@@ -22,6 +19,7 @@ export const DisplayFields = ({
           css={css`
             padding-bottom: 15px;
           `}
+          key={f as string}
         >
           <Field name={f} placeholder={f} />
           <br />
@@ -46,7 +44,7 @@ export const DisplayFields = ({
       .map(f =>
         typeof f === "object" ? (
           <Field
-            component={DisplayRadio}
+            component={Radio}
             name={f["field-name"]}
             options={f!["options"]}
             key={f["field-name"]}
@@ -56,36 +54,4 @@ export const DisplayFields = ({
         )
       )}
   </>
-)
-export const DisplayRadio = (props: FieldProps & { options: string[] }) => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 50%;
-      align-self: center;
-    `}
-  >
-    <label
-      css={css`
-        align-self: flex-start;
-      `}
-    >
-      {props.field.name}
-    </label>
-    <br />
-    {props.options.map(option => (
-      <div key={option}>
-        <input
-          onChange={props.field.onChange}
-          name={props.field.name}
-          value={option}
-          type="radio"
-          checked={props.field.value === option}
-        />
-        {option} <br />
-      </div>
-    ))}
-  </div>
 )
