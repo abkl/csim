@@ -2,9 +2,9 @@ import {
   sheetsDataToJSON,
   collectMatchDataIntoTeamObj,
   calculateStatistics,
-} from "./util"
+} from "../src/utils/data-functions"
 import { mean } from "simple-statistics"
-import data from "./last-year-data"
+import data from "../src/utils/last-year-data"
 describe("sheetsDataToJSON", () => {
   test("should properly converts data from google sheets to JSON", () => {
     const mockData = [["hello", "world"], [0, 1], [1, 0]]
