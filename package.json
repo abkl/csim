@@ -7,10 +7,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.5",
     "@emotion/styled": "^10.0.5",
-    "@types/react-helmet": "^5.0.8",
-    "@types/typography": "^0.16.1",
-    "@types/yup": "^0.26.4",
-    "axios": "^0.18.0",
     "emotion-theming": "^10.0.6",
     "formik": "^1.4.1",
     "gatsby": "^2.0.81",
@@ -47,16 +43,77 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.ts*\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "test": "jest",
     "type-check": "tsc --noEmit",
+    "lint-staged": "lint-staged",
     "type-check:watch": "npm run type-check -- --watch",
     "graphql-types": "gql-gen --url http://localhost:8000/___graphql --template typescript --out ./src/graphql-types.d.ts"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.13",
+    "@types/jest": "^23.3.2",
+    "@types/react-helmet": "^5.0.8",
+    "@types/typography": "^0.16.1",
+    "@types/yup": "^0.26.4",
     "graphql-code-generator": "^0.15.2",
     "graphql-codegen-typescript-template": "^0.15.2",
-    "prettier": "^1.15.2"
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "jest-dom": "^3.0.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.2",
+    "react-testing-library": "^5.1.0",
+    "ts-jest": "^23.10.1",
+    "tslint": "^5.9.1",
+    "typescript": "latest"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --project tsconfig.json",
+      "git add"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "globals": {
+      "__PATH_PREFIX__": ""
+    },
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(tsx?|jsx?)$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(gatsby)/)"
+    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      ".cache"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "typeface-*": "identity-obj-proxy",
+      ".+\\.(css|styl|less|sass|scss)$": "identity-obj-proxy",
+      ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file.js"
+    },
+    "collectCoverage": false,
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "html"
+    ]
   },
   "repository": {
     "type": "git",
