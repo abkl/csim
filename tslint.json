@@ -1,8 +1,0 @@
-{
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "rules": {
-    "only-arrow-functions": true,
-    "ordered-imports": false,
-    "interface-name": [true, "never-prefix"]
-  }
-}
