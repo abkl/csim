@@ -46,7 +46,7 @@ export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
           <Field
             component={Radio}
             name={f["field-name"]}
-            options={f!["options"]}
+            options={f["options"] as string[]}
             key={f["field-name"]}
           />
         ) : (

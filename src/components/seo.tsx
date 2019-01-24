@@ -76,8 +76,8 @@ function SEO({
 interface SEOProps {
   description: string
   lang?: string
-  meta?: Array<any>
-  keywords?: Array<string>
+  meta?: any[]
+  keywords?: string[]
   title: string
 }
 export default SEO

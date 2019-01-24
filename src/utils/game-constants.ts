@@ -18,8 +18,14 @@ export type FieldType =
   | string
   | {
       "field-name": string
-      type: "Radio" | "Switch" | "Number"
-      options?: string[]
+      type: "Switch" | "Number"
+      [s: string]: string | string[]
+    }
+  | {
+      "field-name": string
+      type: "Radio"
+      options: string[]
+      [s: string]: string | string[]
     }
 export interface Fields {
   "Pre-game": FieldType[]

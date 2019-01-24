@@ -8,7 +8,7 @@ import { Fields } from "../../utils/game-constants"
 import { rhythm } from "../../utils/typography"
 import Modal from "../primatives/modal"
 import DisplayValues from "./display-values"
-
+import axios from "axios"
 export default ({ fields }: { fields: Fields }) => {
   const [modalState, setModalState] = useState(false)
   return (
@@ -17,19 +17,14 @@ export default ({ fields }: { fields: Fields }) => {
         initialValues={initiallizeFormState(fields)}
         onSubmit={(values, { setSubmitting }) => {
           const proxyurl = "https://cors-anywhere.herokuapp.com/"
-          fetch(
-            proxyurl +
-              "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
-            {
-              method: "POST",
-              body: JSON.stringify(values),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          )
+          axios
+            .post(
+              proxyurl +
+                "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
+              JSON.stringify(values)
+            )
             .then(r => console.log("Request Success", r))
-            .catch(r => console.log("request failure"))
+            .catch(() => console.log("request failure"))
           setSubmitting(false)
         }}
       >
