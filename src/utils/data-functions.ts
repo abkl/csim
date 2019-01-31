@@ -1,4 +1,4 @@
-import { mean } from "simple-statistics"
+import { mean, standardDeviation } from "simple-statistics"
 
 export const sheetsDataToJSON = (sheetsData: any[][]) => {
   if (sheetsData.length < 2) {
@@ -24,7 +24,7 @@ export interface TeamCollection {
   [s: string]: {
     matchData: MatchData[]
     stats?: {
-      mean: { [a: string]: number }
+      [key: string]: { mean: number; standardDeviation: number }
     }
   }
 }
@@ -55,7 +55,12 @@ export const calculateStatistics = (d: TeamCollection): TeamCollection => {
       return {
         ...statisticsObj,
         [key]: {
-          mean: mean(matchDataArray.map((md: any) => parseInt(md[key], 10))),
+          mean: mean(
+            matchDataArray.map((md: MatchData) => parseInt(md[key], 10))
+          ),
+          standardDeviation: standardDeviation(
+            matchDataArray.map((md: MatchData) => parseInt(md[key], 10))
+          ),
         },
       }
     }, {})

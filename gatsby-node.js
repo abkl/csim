@@ -5,6 +5,8 @@
  */
 
 // You can delete this file if you're not using it
+/* eslint-disable @typescript-eslint/no-var-requires */
+// @ts-check
 const { fetchTeamsFromTBA } = require("./lib/apiFetches")
 const { uniq } = require("ramda")
 const path = require("path")

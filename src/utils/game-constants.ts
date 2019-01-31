@@ -66,9 +66,14 @@ export const fields: Fields = {
     { "field-name": "Number of Cargo dropped(Teleop)", type: "Number" },
   ],
   "End game": [
-    "Habitat Return",
-    "Rocket Completion",
-    "Robot Deadtime",
+    { "field-name": "Habitat Return", type: "Switch" },
+    { "field-name": "Number of Fouls", type: "Number" },
+    { "field-name": "Rocket Completion", type: "Switch" },
+    {
+      "field-name": "Robot Deadtime",
+      type: "Radio",
+      options: ["Never Dead", "Less than 15 Seconds", "More than 15 seconds"],
+    },
     "Comments",
   ],
 }

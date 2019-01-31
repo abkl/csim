@@ -3,7 +3,7 @@ import {
   collectMatchDataIntoTeamObj,
   calculateStatistics,
 } from "../src/utils/data-functions"
-import { mean } from "simple-statistics"
+import { mean, standardDeviation } from "simple-statistics"
 import data from "../src/utils/last-year-data"
 describe("sheetsDataToJSON", () => {
   test("should properly converts data from google sheets to JSON", () => {
@@ -81,15 +81,27 @@ describe("matchData to teamCollection", () => {
       "114": {
         ...mockData["114"],
         stats: {
-          Number: { mean: mean([1, 2, 2]) },
-          Number2: { mean: mean([4, 4, 4]) },
+          Number: {
+            mean: mean([1, 2, 2]),
+            standardDeviation: standardDeviation([1, 2, 2]),
+          },
+          Number2: {
+            mean: mean([4, 4, 4]),
+            standardDeviation: standardDeviation([4, 4, 4]),
+          },
         },
       },
       "254": {
         ...mockData["254"],
         stats: {
-          Number: { mean: mean([10, 20, 20]) },
-          Number2: { mean: mean([4, 4, 4]) },
+          Number: {
+            mean: mean([10, 20, 20]),
+            standardDeviation: standardDeviation([10, 20, 20]),
+          },
+          Number2: {
+            mean: mean([4, 4, 4]),
+            standardDeviation: standardDeviation([4, 4, 4]),
+          },
         },
       },
     })

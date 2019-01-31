@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Formik } from "formik"
 import Button from "../primatives/button"
-import { initiallizeFormState, createValidateObject } from "./form-util"
+import { initiallizeFormState } from "./form-util"
 import { css } from "@emotion/core/"
 import DisplayFields from "./display-fields"
 import { Fields } from "../../utils/game-constants"
@@ -15,7 +15,7 @@ export default ({ fields }: { fields: Fields }) => {
     <div>
       <Formik
         initialValues={initiallizeFormState(fields)}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, actions) => {
           const proxyurl = "https://cors-anywhere.herokuapp.com/"
           axios
             .post(
@@ -25,7 +25,11 @@ export default ({ fields }: { fields: Fields }) => {
             )
             .then(r => console.log("Request Success", r))
             .catch(() => console.log("request failure"))
-          setSubmitting(false)
+            .then(() => {
+              actions.setSubmitting(false)
+              actions.resetForm()
+              setModalState(false)
+            })
         }}
       >
         {props => (
@@ -70,7 +74,13 @@ export default ({ fields }: { fields: Fields }) => {
               <Modal onClose={() => setModalState(false)}>
                 <h1> Confirm </h1>
                 <DisplayValues values={props.values} />
-                <Button type="submit"> Submit </Button>
+                {props.isSubmitting ? (
+                  <p> loading... </p>
+                ) : (
+                  <Button disabled={props.isSubmitting} type="submit">
+                    Submit
+                  </Button>
+                )}
               </Modal>
             )}
           </form>
