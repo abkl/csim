@@ -1,5 +1,5 @@
 import { mean, standardDeviation } from "simple-statistics"
-
+import { Column } from "react-table"
 export const sheetsDataToJSON = (sheetsData: any[][]) => {
   if (sheetsData.length < 2) {
     throw Error("invalid data passed!")
@@ -20,12 +20,16 @@ export interface MatchData {
   "Team number": string
   [s: string]: any
 }
+interface Stats {
+  "Mean Number of Balls": { mean: number; standardDeviation: number }
+  "Mean Number of Rings": { mean: number; standardDeviation: number }
+  "Points Scored": { mean: number; standardDeviation: number }
+  [key: string]: { mean: number; standardDeviation: number }
+}
 export interface TeamCollection {
   [s: string]: {
     matchData: MatchData[]
-    stats?: {
-      [key: string]: { mean: number; standardDeviation: number }
-    }
+    stats: Stats
   }
 }
 export const collectMatchDataIntoTeamObj = (d: MatchData[]): TeamCollection =>
@@ -75,3 +79,8 @@ export const calculateStatistics = (d: TeamCollection): TeamCollection => {
     }
   }, {})
 }
+
+export const createColumnsFromStats = (
+  s: Stats
+): Column<{ [key: string]: number }>[] =>
+  Object.keys(s).map(key => ({ Header: key, accessor: `${key}.mean` }))

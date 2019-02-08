@@ -21,7 +21,11 @@ export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
           `}
           key={f as string}
         >
-          <Field name={f} placeholder={f} />
+          <Field
+            component={f === "Comments" ? "textarea" : "input"}
+            name={f}
+            placeholder={f}
+          />
           <br />
         </div>
       ))}

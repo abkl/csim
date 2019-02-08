@@ -1,5 +1,5 @@
 import React from "react"
-import TeamsContext from "../contexts/teams-context"
+import RootContext from "../contexts/root-context"
 import { ThemeProvider } from "emotion-theming"
 import theme from "../utils/theme"
 import { css } from "@emotion/core"
@@ -19,21 +19,23 @@ const Layout = ({ children }: LayoutProps) => {
           }
         }
       `}
-      render={data => (
-        <ThemeProvider theme={theme}>
-          <TeamsContext>
-            <AppBar siteTitle={data.site.siteMetadata.title} />
-            <div
-              css={css`
-                padding: ${rhythm(2)};
-                padding-top: ${rhythm(1.5)};
-              `}
-            >
-              {children}
-            </div>
-          </TeamsContext>
-        </ThemeProvider>
-      )}
+      render={data => {
+        return (
+          <ThemeProvider theme={theme}>
+            <RootContext>
+              <AppBar siteTitle={data.site.siteMetadata.title} />
+              <div
+                css={css`
+                  padding: ${rhythm(2)};
+                  padding-top: ${rhythm(1.5)};
+                `}
+              >
+                {children}
+              </div>
+            </RootContext>
+          </ThemeProvider>
+        )
+      }}
     />
   )
 }
