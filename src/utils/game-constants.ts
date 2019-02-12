@@ -18,8 +18,14 @@ export type FieldType =
   | string
   | {
       "field-name": string
-      type: "Radio" | "Switch" | "Number"
-      options?: string[]
+      type: "Switch" | "Number"
+      [s: string]: string | string[]
+    }
+  | {
+      "field-name": string
+      type: "Radio"
+      options: string[]
+      [s: string]: string | string[]
     }
 export interface Fields {
   "Pre-game": FieldType[]
@@ -31,10 +37,11 @@ export interface Fields {
 export const fields: Fields = {
   "Pre-game": [
     "Your Name",
+    "Team Number",
     {
       "field-name": "Event Code",
       type: "Radio",
-      options: ["sfr", "???"],
+      options: ["sfr", "svr"],
     },
     "Match Number",
     {
@@ -58,11 +65,17 @@ export const fields: Fields = {
     { "field-name": "Number of Cargo(Teleop)", type: "Number" },
     { "field-name": "Number of Hatch Panels dropped(Teleop)", type: "Number" },
     { "field-name": "Number of Cargo dropped(Teleop)", type: "Number" },
+    { "field-name": "Number of Fouls", type: "Number" },
   ],
   "End game": [
-    "Habitat Return",
-    "Rocket Completion",
-    "Robot Deadtime",
+    { "field-name": "Habitat Return", type: "Switch" },
+    { "field-name": "Rocket Completion", type: "Switch" },
+    {
+      "field-name": "Robot Deadtime",
+      type: "Radio",
+      options: ["Never Dead", "Less than 15 Seconds", "More than 15 seconds"],
+    },
+    "Total Score(At the end of the Game)",
     "Comments",
   ],
 }

@@ -1,7 +1,7 @@
 import Typography, { TypographyOptions } from "typography"
-//@ts-ignore
+// @ts-ignore
 import oceanBeachTheme from "typography-theme-ocean-beach"
-;(oceanBeachTheme as TypographyOptions).overrideThemeStyles = (_, options) => ({
+;(oceanBeachTheme as TypographyOptions).overrideThemeStyles = () => ({
   "h1,h2,h3,h4,h5": {
     marginTop: 0,
   },

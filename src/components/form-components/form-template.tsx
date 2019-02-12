@@ -1,36 +1,35 @@
 import React, { useState } from "react"
 import { Formik } from "formik"
 import Button from "../primatives/button"
-import { initiallizeFormState, createValidateObject } from "./form-util"
+import { initiallizeFormState } from "./form-util"
 import { css } from "@emotion/core/"
 import DisplayFields from "./display-fields"
 import { Fields } from "../../utils/game-constants"
 import { rhythm } from "../../utils/typography"
 import Modal from "../primatives/modal"
 import DisplayValues from "./display-values"
-
+import axios from "axios"
 export default ({ fields }: { fields: Fields }) => {
   const [modalState, setModalState] = useState(false)
   return (
     <div>
       <Formik
         initialValues={initiallizeFormState(fields)}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, actions) => {
           const proxyurl = "https://cors-anywhere.herokuapp.com/"
-          fetch(
-            proxyurl +
-              "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
-            {
-              method: "POST",
-              body: JSON.stringify(values),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          )
+          axios
+            .post(
+              proxyurl +
+                "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
+              JSON.stringify(values)
+            )
             .then(r => console.log("Request Success", r))
-            .catch(r => console.log("request failure"))
-          setSubmitting(false)
+            .catch(() => console.log("request failure"))
+            .then(() => {
+              actions.setSubmitting(false)
+              actions.resetForm()
+              setModalState(false)
+            })
         }}
       >
         {props => (
@@ -75,7 +74,13 @@ export default ({ fields }: { fields: Fields }) => {
               <Modal onClose={() => setModalState(false)}>
                 <h1> Confirm </h1>
                 <DisplayValues values={props.values} />
-                <Button type="submit"> Submit </Button>
+                {props.isSubmitting ? (
+                  <p> loading... </p>
+                ) : (
+                  <Button disabled={props.isSubmitting} type="submit">
+                    Submit
+                  </Button>
+                )}
               </Modal>
             )}
           </form>

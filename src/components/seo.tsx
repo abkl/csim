@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -76,8 +75,8 @@ function SEO({
 interface SEOProps {
   description: string
   lang?: string
-  meta?: Array<any>
-  keywords?: Array<string>
+  meta?: any[]
+  keywords?: string[]
   title: string
 }
 export default SEO

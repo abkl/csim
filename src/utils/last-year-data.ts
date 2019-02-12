@@ -18,7 +18,7 @@ const data = [
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
     "Problems with robot/driver":
-      "Robot got more than 3 fouls, Robot dead for less than 1 minute"
+      "Robot got more than 3 fouls, Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 8:50:26",
@@ -38,7 +38,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 8:57:56",
@@ -58,7 +58,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:14:45",
@@ -78,7 +78,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:48:19",
@@ -98,7 +98,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:09:15",
@@ -118,7 +118,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Dropped partner",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:16:33",
@@ -138,7 +138,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 8:56:41",
@@ -158,7 +158,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Parked",
-    "Problems with robot/driver": "Robot tipped over"
+    "Problems with robot/driver": "Robot tipped over",
   },
   {
     Timestamp: "10/6/2018 8:57:35",
@@ -178,7 +178,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 8:59:12",
@@ -198,7 +198,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:16:54",
@@ -218,7 +218,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:18:01",
@@ -238,7 +238,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "Robot tipped over"
+    "Problems with robot/driver": "Robot tipped over",
   },
   {
     Timestamp: "10/6/2018 9:49:54",
@@ -258,7 +258,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:04:46",
@@ -278,7 +278,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:05:24",
@@ -298,7 +298,7 @@ const data = [
       "2",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:05:55",
@@ -318,7 +318,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:06:17",
@@ -338,7 +338,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:06:18",
@@ -358,7 +358,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:06:38",
@@ -378,7 +378,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:06:54",
@@ -398,7 +398,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:12:40",
@@ -418,7 +418,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:47:08",
@@ -438,7 +438,7 @@ const data = [
       "3",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:13:45",
@@ -458,7 +458,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:13:53",
@@ -478,7 +478,7 @@ const data = [
       "1",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Lift partner",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:13:54",
@@ -498,7 +498,7 @@ const data = [
       "1",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:14:11",
@@ -518,7 +518,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:20:47",
@@ -538,7 +538,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:28:56",
@@ -558,7 +558,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:49:22",
@@ -578,7 +578,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:21:34",
@@ -598,7 +598,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:21:48",
@@ -618,7 +618,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:21:51",
@@ -638,7 +638,7 @@ const data = [
       "2",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:28:21",
@@ -658,7 +658,7 @@ const data = [
       "1",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:29:50",
@@ -678,7 +678,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:51:32",
@@ -698,7 +698,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:28:26",
@@ -718,7 +718,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:29:11",
@@ -738,7 +738,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:29:12",
@@ -758,7 +758,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:31:01",
@@ -778,7 +778,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:53:02",
@@ -798,7 +798,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "5",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:37:51",
@@ -818,7 +818,7 @@ const data = [
       "1",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:38:41",
@@ -838,7 +838,7 @@ const data = [
       "4",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:38:59",
@@ -858,7 +858,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Lift self only",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:39:00",
@@ -878,7 +878,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for more than 1 minute"
+    "Problems with robot/driver": "Robot dead for more than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:39:31",
@@ -898,7 +898,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:54:16",
@@ -918,7 +918,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "Robot dead for more than 1 minute"
+    "Problems with robot/driver": "Robot dead for more than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:45:14",
@@ -938,7 +938,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:45:39",
@@ -958,7 +958,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:46:05",
@@ -978,7 +978,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for more than 1 minute"
+    "Problems with robot/driver": "Robot dead for more than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:46:41",
@@ -998,7 +998,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:58:25",
@@ -1018,7 +1018,7 @@ const data = [
       "2",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:54:42",
@@ -1038,7 +1038,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:54:57",
@@ -1058,7 +1058,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:55:09",
@@ -1078,7 +1078,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 9:55:45",
@@ -1098,7 +1098,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 9:58:19",
@@ -1118,7 +1118,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:06:55",
@@ -1138,7 +1138,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:07:42",
@@ -1158,7 +1158,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:08:16",
@@ -1178,7 +1178,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:08:37",
@@ -1198,7 +1198,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:14:57",
@@ -1218,7 +1218,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot dead for more than 1 minute"
+    "Problems with robot/driver": "Robot dead for more than 1 minute",
   },
   {
     Timestamp: "10/6/2018 10:15:46",
@@ -1238,7 +1238,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "4",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:15:59",
@@ -1258,7 +1258,7 @@ const data = [
       "5",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Parked",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 10:18:46",
@@ -1278,7 +1278,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:23:44",
@@ -1298,7 +1298,7 @@ const data = [
       "1",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:24:14",
@@ -1319,7 +1319,7 @@ const data = [
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
     "Problems with robot/driver":
-      "Robot tipped over, Robot dead for less than 1 minute"
+      "Robot tipped over, Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 10:24:53",
@@ -1339,7 +1339,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:25:05",
@@ -1359,7 +1359,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:27:59",
@@ -1379,7 +1379,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "4",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:29:23",
@@ -1399,7 +1399,7 @@ const data = [
       "2",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Lift self only",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:29:34",
@@ -1419,7 +1419,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:32:46",
@@ -1439,7 +1439,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot didn't show up"
+    "Problems with robot/driver": "Robot didn't show up",
   },
   {
     Timestamp: "10/6/2018 10:36:33",
@@ -1459,7 +1459,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Parked",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:40:41",
@@ -1479,7 +1479,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Lift partner",
-    "Problems with robot/driver": "Robot dead for less than 1 minute"
+    "Problems with robot/driver": "Robot dead for less than 1 minute",
   },
   {
     Timestamp: "10/6/2018 10:45:09",
@@ -1499,7 +1499,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:46:13",
@@ -1519,7 +1519,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Lift self only",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:46:39",
@@ -1539,7 +1539,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:47:18",
@@ -1559,7 +1559,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "Robot tipped over"
+    "Problems with robot/driver": "Robot tipped over",
   },
   {
     Timestamp: "10/6/2018 10:48:48",
@@ -1579,7 +1579,7 @@ const data = [
       "3",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 10:56:40",
@@ -1599,7 +1599,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "Robot tipped over"
+    "Problems with robot/driver": "Robot tipped over",
   },
   {
     Timestamp: "10/6/2018 10:58:55",
@@ -1619,7 +1619,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:00:51",
@@ -1640,7 +1640,7 @@ const data = [
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Lift self only",
     "Problems with robot/driver":
-      "Robot tipped over, No problems with robot., Robot didn't show up"
+      "Robot tipped over, No problems with robot., Robot didn't show up",
   },
   {
     Timestamp: "10/6/2018 11:07:16",
@@ -1660,7 +1660,7 @@ const data = [
       "4",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Lift self only",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:08:31",
@@ -1680,7 +1680,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:09:54",
@@ -1700,7 +1700,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:10:08",
@@ -1720,7 +1720,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:10:38",
@@ -1740,7 +1740,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:19:32",
@@ -1760,7 +1760,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "2",
     Endgame: "Failed to make it onto the scale area",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:25:50",
@@ -1780,7 +1780,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "3",
     Endgame: "Lift self only",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:37:32",
@@ -1800,7 +1800,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "1",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:44:56",
@@ -1820,7 +1820,7 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
+    "Problems with robot/driver": "No problems with robot.",
   },
   {
     Timestamp: "10/6/2018 11:51:16",
@@ -1840,8 +1840,8 @@ const data = [
       "0",
     "Total number of cubes fumbled(robot lost control of cube)": "0",
     Endgame: "Climbed on ramp",
-    "Problems with robot/driver": "No problems with robot."
-  }
+    "Problems with robot/driver": "No problems with robot.",
+  },
 ]
 
 export default data

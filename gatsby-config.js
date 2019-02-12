@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/camelcase */
 module.exports = {
   siteMetadata: {
-    title: `Cardinal Scout Improved`,
+    title: `CSIM`,
     description: `Revolutionizing scouting since 2018`,
     author: `@thiskappaisgrey`,
   },
@@ -41,12 +42,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/layout/index.tsx`),
+        component: require.resolve(`./src/templates/default-layout.tsx`),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-webpack-bundle-analyzer`,
+      options: {
+        analyzerPort: 3000,
+        production: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
   ],
   pathPrefix: `/csim`,
 }

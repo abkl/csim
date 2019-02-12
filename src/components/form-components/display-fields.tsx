@@ -21,7 +21,11 @@ export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
           `}
           key={f as string}
         >
-          <Field name={f} placeholder={f} />
+          <Field
+            component={f === "Comments" ? "textarea" : "input"}
+            name={f}
+            placeholder={f}
+          />
           <br />
         </div>
       ))}
@@ -46,7 +50,7 @@ export default ({ fields, setFieldValue, values }: DisplayFieldsProps) => (
           <Field
             component={Radio}
             name={f["field-name"]}
-            options={f!["options"]}
+            options={f["options"] as string[]}
             key={f["field-name"]}
           />
         ) : (

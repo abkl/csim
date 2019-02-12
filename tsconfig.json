@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "esnext",
-
     "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
+    "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
     "lib": ["dom", "es2015", "es2017"],
     "module": "esnext",

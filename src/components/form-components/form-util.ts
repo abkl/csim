@@ -1,9 +1,9 @@
 import * as Yup from "yup"
-import { Fields, FieldType, fields } from "../../utils/game-constants"
+import { Fields } from "../../utils/game-constants"
 export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
   Object.keys(fields)
-    .map(f => fields[f]) //map out the fields into [[fields]]
-    .reduce((acc, val) => acc.concat(val), []) //flattens the array
+    .map(f => fields[f]) // map out the fields into [[fields]]
+    .reduce((acc, val) => acc.concat(val), []) // flattens the array
     .reduce((state, field) => {
       if (typeof field === "object") {
         switch (field["type"]) {
@@ -15,7 +15,9 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
           case "Radio":
             return {
               ...state,
-              [field["field-name"]]: field!["options"]![0],
+              [field["field-name"]]: field["options"]
+                ? field["options"][0]
+                : "none-selected",
             }
           case "Switch":
             return {
