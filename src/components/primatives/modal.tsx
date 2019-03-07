@@ -13,7 +13,7 @@ const ModalOverlay = styled.div`
   height: 100%;
   width: 100%;
 `
-const Modal = styled.div`
+const ModalPaper = styled.div`
   background-color: white;
   border-radius: 3px;
   padding: 1rem 2rem;
@@ -55,19 +55,19 @@ function useLockBodyScroll() {
     return () => (document.body.style.overflow = "visible")
   }, []) // Empty array ensures effect is only run on mount and unmount
 }
-export default ({
+export default function Modal({
   onClose,
   children,
 }: {
   onClose: () => void
   children: React.ReactNode
-}) => {
+}) {
   const ref = useRef(null)
   useOnClickOutside(ref, () => onClose())
   useLockBodyScroll()
   return (
     <ModalOverlay>
-      <Modal ref={ref}>{children}</Modal>
+      <ModalPaper ref={ref}>{children}</ModalPaper>
     </ModalOverlay>
   )
 }

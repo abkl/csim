@@ -1,9 +1,12 @@
 import React from "react"
 
-export default function() {
+const PickListPage = () => {
   return (
     <div>
-      <h1> PickList </h1>
+      <h1> Your PickList </h1>
+      <em> Not synced to the internet, local only. </em>
     </div>
   )
 }
+
+export default PickListPage

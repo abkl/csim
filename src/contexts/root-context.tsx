@@ -11,7 +11,7 @@ interface Props {
 }
 export const RootContext = createContext<{
   state: RootState
-  changeState: (a: any) => void
+  changeState: (a: (b: RootState) => any) => void | any
 }>({
   state: {
     matchData: [],
@@ -20,7 +20,7 @@ export const RootContext = createContext<{
   },
   changeState: () => {},
 })
-export default function(props: Props) {
+export default function RootContextContainer(props: Props) {
   const [state, changeState] = useState<RootState>({
     matchData: [{ "Team number": "114", "Number of Balls": 1 }],
     teams: data,

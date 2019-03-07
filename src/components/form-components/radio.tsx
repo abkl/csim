@@ -19,7 +19,7 @@ const Radio = (props: FieldProps & { options: string[] }) => (
         text-align: left;
       `}
     >
-      {props.field.name}
+      {props.field.name}:
     </legend>
     <div
       css={css`

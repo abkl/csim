@@ -24,16 +24,21 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
               ...state,
               [field["field-name"]]: false,
             }
-          default:
+          case "Slider":
             return {
               ...state,
+              [field["field-name"]]: 0,
             }
+          default:
+            return state
         }
       }
-      return {
-        ...state,
-        [field as string]: "",
-      }
+      if (typeof field === "string")
+        return {
+          ...state,
+          [field]: "",
+        }
+      return state
     }, {}) // initializes the form state
 
 export const createValidateObject = (fields: Fields) => {

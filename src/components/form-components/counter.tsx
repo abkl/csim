@@ -6,44 +6,48 @@ interface CounterProps {
   name: string
   value: string
 }
-export default ({ name, value, onChange }: CounterProps) => (
-  <div
-    css={{
-      display: "flex",
-      flexDirection: "column",
-      borderWidth: "5px",
-      paddingBottom: "5%",
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <label>{name}</label>
-    <br />
+export default function Counter({ name, value, onChange }: CounterProps) {
+  return (
     <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        width: 50%;
-        max-width: 160px;
-      `}
+      css={{
+        display: "flex",
+        flexDirection: "column",
+        borderWidth: "5px",
+        paddingBottom: "5%",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <Button
-        type="button"
-        onClick={() => (parseInt(value) ? onChange(parseInt(value) - 1) : "")}
+      <label>{name}:</label>
+      <br />
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 50%;
+          max-width: 160px;
+        `}
       >
-        -
-      </Button>
+        <Button
+          type="button"
+          onClick={() => (parseInt(value) ? onChange(parseInt(value) - 1) : "")}
+        >
+          -
+        </Button>
 
-      <label css={{ textAlign: "center", alignSelf: "center" }}>{value}</label>
-      <Button
-        type="button"
-        onClick={() =>
-          parseInt(value) >= 0 ? onChange(parseInt(value) + 1) : ""
-        }
-      >
-        +
-      </Button>
+        <label css={{ textAlign: "center", alignSelf: "center" }}>
+          {value}
+        </label>
+        <Button
+          type="button"
+          onClick={() =>
+            parseInt(value) >= 0 ? onChange(parseInt(value) + 1) : ""
+          }
+        >
+          +
+        </Button>
+      </div>
     </div>
-  </div>
-)
+  )
+}

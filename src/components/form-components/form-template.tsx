@@ -9,25 +9,34 @@ import { rhythm } from "../../utils/typography"
 import Modal from "../primatives/modal"
 import DisplayValues from "./display-values"
 import axios from "axios"
-export default ({ fields }: { fields: Fields }) => {
+const FormTemplate = ({ fields }: { fields: Fields }) => {
   const [modalState, setModalState] = useState(false)
   return (
     <div>
       <Formik
         initialValues={initiallizeFormState(fields)}
-        onSubmit={(values, actions) => {
+        onSubmit={(
+          values: { "Event Code"?: string; [s: string]: any },
+          actions
+        ) => {
           const proxyurl = "https://cors-anywhere.herokuapp.com/"
+          function getURL() {
+            switch (values["Event Code"]) {
+              case "sfr":
+                return "https://script.google.com/macros/s/AKfycbxdqDlv5M1Et_yQ4qrANEzwBN0FcrXLQitbKtMYfN84XiKQ_HI4/exec"
+              case "svr":
+                return "https://script.google.com/macros/s/AKfycbxd9o5VOvlJT4SqTeJTAoUmT9WNxmagGafiTARnFCyU7bgPlcnR/exec"
+              default:
+                return "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec"
+            }
+          }
           axios
-            .post(
-              proxyurl +
-                "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
-              JSON.stringify(values)
-            )
-            .then(r => console.log("Request Success", r))
+            .post(proxyurl + getURL(), JSON.stringify(values))
+            .then(r => console.log(`Request Success ${getURL()}`, r))
             .catch(() => console.log("request failure"))
             .then(() => {
               actions.setSubmitting(false)
-              actions.resetForm()
+              actions.resetForm(initiallizeFormState(fields))
               setModalState(false)
             })
         }}
@@ -89,3 +98,4 @@ export default ({ fields }: { fields: Fields }) => {
     </div>
   )
 }
+export default FormTemplate
