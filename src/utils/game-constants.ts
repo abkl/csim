@@ -18,9 +18,16 @@ export type FieldType =
   | string
   | {
       "field-name": string
-      type: "Switch" | "Number"
-      [s: string]: string | string[] | boolean
+      type: "Switch"
+      [s: string]: string | boolean
       scoring: boolean
+    }
+  | {
+      "field-name": string
+      type: "Number"
+      scoring: boolean
+      dropped: boolean
+      [s: string]: string | boolean
     }
   | {
       "field-name": string
@@ -63,94 +70,110 @@ export const fields: Fields = {
       options: ["level 1", "level 2"],
       scoring: true,
     },
+    {
+      "field-name": "Started With",
+      type: "Radio",
+      options: ["none", "Cargo", "Hatch Panel"],
+      scoring: false,
+    },
   ],
   Sandstorm: [
     { "field-name": "Leave Habitat", type: "Switch", scoring: true },
     {
-      "field-name": "Number Hatch Panels U(Sandstorm)",
+      "field-name": "Number Hatch Panels ST lvl 1/cgshp",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
+
     {
-      "field-name": "Number Hatch Panels L(Sandstorm)",
+      "field-name": "Number Hatch Panels ST lvl 2",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Hatch Panels dropped U(Sandstorm)",
-      type: "Number",
-      scoring: false,
-    },
-    {
-      "field-name": "Number Hatch Panels dropped L(Sandstorm)",
-      type: "Number",
-      scoring: false,
-    },
-    {
-      "field-name": "Number Cargo U(Sandstorm)",
+      "field-name": "Number Hatch Panels ST lvl 3",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Cargo L(Sandstorm)",
+      "field-name": "Number Cargo ST lvl 1/cgshp",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Cargo dropped U(Sandstorm)",
+      "field-name": "Number Cargo ST lvl 2",
       type: "Number",
-      scoring: false,
+      scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Cargo dropped L(Sandstorm)",
+      "field-name": "Number Cargo ST lvl 3",
       type: "Number",
-      scoring: false,
+      scoring: true,
+      dropped: true,
     },
   ],
   Teleop: [
     {
-      "field-name": "Number Hatch Panels U(Teleop)",
+      "field-name": "Number Hatch Panels TLOP lvl1/cgshp",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Hatch Panels L(Teleop)",
+      "field-name": "Number Hatch Panels TLOP lvl 2",
       type: "Number",
       scoring: true,
+      dropped: true,
     },
     {
-      "field-name": "Number Hatch Panels dropped U(Teleop)",
+      "field-name": "Number Hatch Panels TLOP lvl 3",
       type: "Number",
+      scoring: true,
+      dropped: true,
+    },
+    {
+      "field-name": "Number Cargo TLOP lvl 1/cgshp",
+      type: "Number",
+      scoring: true,
+      dropped: true,
+    },
+    {
+      "field-name": "Number Cargo TLOP lvl 2",
+      type: "Number",
+      scoring: true,
+      dropped: true,
+    },
+    {
+      "field-name": "Number Cargo TLOP lvl 3",
+      type: "Number",
+      scoring: true,
+      dropped: true,
+    },
+    {
+      "field-name": "Number of Fouls",
+      type: "Number",
+      scoring: false,
+      dropped: false,
+    },
+    {
+      "field-name": "Number of Tech Fouls",
+      type: "Number",
+      scoring: false,
+      dropped: false,
+    },
+    {
+      "field-name": "Yellow Card",
+      type: "Switch",
       scoring: false,
     },
     {
-      "field-name": "Number Hatch Panels dropped L(Teleop)",
-      type: "Number",
-      scoring: false,
-    },
-    {
-      "field-name": "Number Cargo U(Teleop)",
-      type: "Number",
-      scoring: true,
-    },
-    {
-      "field-name": "Number Cargo L(Teleop)",
-      type: "Number",
-      scoring: true,
-    },
-    {
-      "field-name": "Number Cargo dropped U(Teleop)",
-      type: "Number",
-      scoring: false,
-    },
-    {
-      "field-name": "Number Cargo dropped L(Teleop)",
-      type: "Number",
-      scoring: false,
-    },
-    {
-      "field-name": "Number of Fouls(Yellow Cards, Red Cards, ect)",
-      type: "Number",
+      "field-name": "Red Card",
+      type: "Switch",
       scoring: false,
     },
   ],

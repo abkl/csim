@@ -8,10 +8,16 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
       if (typeof field === "object") {
         switch (field["type"]) {
           case "Number":
-            return {
-              ...state,
-              [field["field-name"]]: 0,
-            }
+            return field.dropped
+              ? {
+                  ...state,
+                  [field["field-name"]]: 0,
+                  [field["field-name"] + " dropped"]: 0,
+                }
+              : {
+                  ...state,
+                  [field["field-name"]]: 0,
+                }
           case "Radio":
             return {
               ...state,

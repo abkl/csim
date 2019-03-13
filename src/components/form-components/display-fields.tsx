@@ -40,10 +40,11 @@ export default function DisplayFields({
         if (typeof f === "object" && f.type === "Number")
           return (
             <Counter
-              value={values[f["field-name"]]}
-              onChange={v => setFieldValue(f["field-name"] as string, v)}
+              values={values}
+              setFieldValue={setFieldValue}
               name={f["field-name"]}
               key={f["field-name"]}
+              dropped={f.dropped}
             />
           )
         if (typeof f === "object" && f.type === "Switch")

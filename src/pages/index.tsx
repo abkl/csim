@@ -3,9 +3,6 @@ import SEO from "../components/seo"
 import styled from "@emotion/styled"
 import Image from "../components/image"
 import { graphql } from "gatsby"
-import Slider from "rc-slider"
-import "rc-slider/assets/index.css"
-import theme from "../utils/theme"
 const PageHeader = styled.h1`
   text-align: center;
 `
@@ -14,11 +11,11 @@ const SubText = styled.p`
   font-style: italic;
 `
 const IndexPage = ({ data }: { data: any }) => {
-  const teams = data.allSitePage.edges
+  /*  const teams = data.allSitePage.edges
     .filter((node: any) => /teams/.test(node.node.id))
     .map((node: any) => node.node.id.match(/\d+/g))
     .filter((a: any) => a !== null && a.length > 0)
-    .map((a: any) => a[0])
+    .map((a: any) => a[0]) */
   return (
     <>
       <SEO
@@ -29,19 +26,6 @@ const IndexPage = ({ data }: { data: any }) => {
       <Image />
       <PageHeader>Cardinal Scout Imporved(CSIM)</PageHeader>
       <SubText>Welcolme to the 2019 Scouting Application</SubText>
-      <Slider
-        trackStyle={{ backgroundColor: theme.primary.red }}
-        handleStyle={{ borderColor: theme.primary.red }}
-        dots
-        max={4}
-        css={{ margin: "auto", width: "50%" }}
-        marks={{
-          "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-        }}
-      />
     </>
   )
 }

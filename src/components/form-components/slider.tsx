@@ -1,7 +1,7 @@
 import React from "react"
 import Slider, { createSliderWithTooltip } from "rc-slider"
 import theme from "../../utils/theme"
-
+import "rc-slider/assets/index.css"
 interface FormSliderProps {
   onChange: (v: any) => void
   name: string

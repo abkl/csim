@@ -32,6 +32,7 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.5.0",
     "react-pose": "^4.0.6",
     "react-table": "6.9.0",
     "react-typography": "^0.16.18",
@@ -98,8 +99,7 @@
       "eslint --fix"
     ],
     "*.{js,json,md}": [
-      "prettier --write",
-      "eslint --fix"
+      "prettier --write"
     ]
   },
   "husky": {
