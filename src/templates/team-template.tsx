@@ -15,7 +15,7 @@ export interface TeamObject {
   website: string
   competition: string
 }
-export default ({
+const TeamTemplate = ({
   pageContext: { team },
 }: {
   pageContext: { team: TeamObject }
@@ -61,7 +61,6 @@ export default ({
           - Team to Picklist
         </Button>
       )}
-      {console.log(stats)}
       <div css={{ textAlign: "center", marginTop: "5%" }}>
         <h1> Stats Summary Table </h1>
         <ReactTable
@@ -94,3 +93,4 @@ export default ({
     </div>
   )
 }
+export default TeamTemplate

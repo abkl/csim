@@ -8,7 +8,7 @@ const OuterDiv = styled.div`
   margin: auto;
 `
 
-export default function() {
+export default function PieChart() {
   return (
     <OuterDiv>
       <VictoryPie

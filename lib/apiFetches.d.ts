@@ -3,3 +3,4 @@ export function fetchTeamsFromTBA(
   eventKey: string,
   event: string
 ): Promise<TeamObject[]>
+export function fetchDataFromSheets(): Promise<any[][]>

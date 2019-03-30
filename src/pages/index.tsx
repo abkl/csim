@@ -11,11 +11,11 @@ const SubText = styled.p`
   font-style: italic;
 `
 const IndexPage = ({ data }: { data: any }) => {
-  const teams = data.allSitePage.edges
+  /*  const teams = data.allSitePage.edges
     .filter((node: any) => /teams/.test(node.node.id))
     .map((node: any) => node.node.id.match(/\d+/g))
     .filter((a: any) => a !== null && a.length > 0)
-    .map((a: any) => a[0])
+    .map((a: any) => a[0]) */
   return (
     <>
       <SEO
@@ -23,10 +23,9 @@ const IndexPage = ({ data }: { data: any }) => {
         description="Scouting Application for Team 4159"
         keywords={[`scouting`, `application`, `Team 4159`]}
       />
-      {console.log(teams)}
+      <Image />
       <PageHeader>Cardinal Scout Imporved(CSIM)</PageHeader>
       <SubText>Welcolme to the 2019 Scouting Application</SubText>
-      <Image />
     </>
   )
 }

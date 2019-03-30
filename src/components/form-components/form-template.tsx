@@ -9,26 +9,98 @@ import { rhythm } from "../../utils/typography"
 import Modal from "../primatives/modal"
 import DisplayValues from "./display-values"
 import axios from "axios"
-export default ({ fields }: { fields: Fields }) => {
-  const [modalState, setModalState] = useState(false)
+import localforage from "localforage"
+import uuid from "uuid/v4"
+
+const FormTemplate = ({
+  fields,
+  submitUrl,
+  storageKey,
+}: {
+  fields: Fields
+  submitUrl: string
+  storageKey: string
+}) => {
+  const initialModalState = {
+    modalOpen: false,
+    error: false,
+    showValues: true,
+  }
+  const [modalState, setModalState] = useState(initialModalState)
+  const ModalContent = ({
+    isSubmitting,
+    values,
+  }: {
+    isSubmitting: boolean
+    values: any
+  }) => {
+    if (isSubmitting) return <p>loading...</p>
+    if (modalState.showValues) return <DisplayValues values={values} />
+    if (!modalState.error) return <p> Data submitted!</p>
+    if (modalState.error)
+      return (
+        <p>
+          There was an error submitting your form, please try again later(don't
+          worry your values are stored in local storage)
+        </p>
+      )
+  }
   return (
     <div>
       <Formik
         initialValues={initiallizeFormState(fields)}
-        onSubmit={(values, actions) => {
-          const proxyurl = "https://cors-anywhere.herokuapp.com/"
+        onSubmit={(
+          values: { "Event Code"?: string; [s: string]: any },
+          actions
+        ) => {
+          const proxyurl = "https://cors-app-scouting.herokuapp.com/"
+          // function getURL() {
+          //   switch (values["Event Code"]) {
+          //     case "sfr":
+          //       return "https://script.google.com/macros/s/AKfycbxdqDlv5M1Et_yQ4qrANEzwBN0FcrXLQitbKtMYfN84XiKQ_HI4/exec"
+          //     case "svr":
+          //       return "https://script.google.com/macros/s/AKfycbxd9o5VOvlJT4SqTeJTAoUmT9WNxmagGafiTARnFCyU7bgPlcnR/exec"
+          //     default:
+          //       return "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec"
+          //   }
+          // }
           axios
-            .post(
-              proxyurl +
-                "https://script.google.com/macros/s/AKfycbw6coSc3fptX7wLepvJ6idwzkEx9uZwxsKMhcfFuWCit-9WZJIO/exec",
-              JSON.stringify(values)
-            )
-            .then(r => console.log("Request Success", r))
-            .catch(() => console.log("request failure"))
+            .post(proxyurl + submitUrl, JSON.stringify(values), {
+              headers: { "content-type": "json" },
+            })
+            .then(r => {
+              setModalState({ ...modalState, showValues: false })
+              localforage.getItem(storageKey, (err, items: any) => {
+                if (err) return console.log(err)
+                console.log(items)
+                if (items === null)
+                  return localforage.setItem(storageKey, [
+                    { ...values, submitted: true, id: uuid() },
+                  ])
+                localforage.setItem(storageKey, [
+                  ...items,
+                  { ...values, submitted: true, id: uuid() },
+                ])
+              })
+            })
+            .catch(() => {
+              setModalState({ ...modalState, showValues: false, error: true })
+              localforage.getItem(storageKey, (err, items: any) => {
+                if (err) return console.log(err)
+                console.log(items)
+                if (items === null)
+                  return localforage.setItem(storageKey, [
+                    { ...values, submitted: false, id: uuid() },
+                  ])
+                localforage.setItem(storageKey, [
+                  ...items,
+                  { ...values, submitted: false, id: uuid() },
+                ])
+              })
+            })
             .then(() => {
               actions.setSubmitting(false)
-              actions.resetForm()
-              setModalState(false)
+              actions.resetForm(initiallizeFormState(fields))
             })
         }}
       >
@@ -67,15 +139,35 @@ export default ({ fields }: { fields: Fields }) => {
                 />
               </div>
             ))}
-            <Button type="button" onClick={() => setModalState(true)}>
+            <Button
+              type="button"
+              onClick={() =>
+                setModalState({
+                  ...modalState,
+                  modalOpen: true,
+                  showValues: true,
+                })
+              }
+            >
               Confirm
             </Button>
-            {modalState && (
-              <Modal onClose={() => setModalState(false)}>
+            {modalState.modalOpen && (
+              <Modal
+                onClose={() => {
+                  if (!props.isSubmitting) {
+                    setModalState(initialModalState)
+                  }
+                }}
+              >
                 <h1> Confirm </h1>
-                <DisplayValues values={props.values} />
-                {props.isSubmitting ? (
-                  <p> loading... </p>
+                <ModalContent
+                  isSubmitting={props.isSubmitting}
+                  values={props.values}
+                />
+                {!modalState.showValues ? (
+                  <Button onClick={() => setModalState(initialModalState)}>
+                    Close
+                  </Button>
                 ) : (
                   <Button disabled={props.isSubmitting} type="submit">
                     Submit
@@ -89,3 +181,4 @@ export default ({ fields }: { fields: Fields }) => {
     </div>
   )
 }
+export default FormTemplate

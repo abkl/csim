@@ -1,9 +1,9 @@
 import React, { createContext, useState } from "react"
-import { MatchData, TeamCollection } from "../utils/data-functions"
+import { MatchData, Teams } from "../../lib/data-functions"
 import { data } from "../../lib/randomData"
 export interface RootState {
   matchData: MatchData[] | []
-  teams: TeamCollection
+  teams: Teams | {}
   pickList: number[]
 }
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 export const RootContext = createContext<{
   state: RootState
-  changeState: (a: any) => void
+  changeState: (a: (b: RootState) => any) => void | any
 }>({
   state: {
     matchData: [],
@@ -20,10 +20,10 @@ export const RootContext = createContext<{
   },
   changeState: () => {},
 })
-export default function(props: Props) {
+export default function RootContextContainer(props: Props) {
   const [state, changeState] = useState<RootState>({
-    matchData: [{ "Team number": "114", "Number of Balls": 1 }],
-    teams: data,
+    matchData: [],
+    teams: {},
     pickList: [],
   })
   return (

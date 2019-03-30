@@ -8,10 +8,16 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
       if (typeof field === "object") {
         switch (field["type"]) {
           case "Number":
-            return {
-              ...state,
-              [field["field-name"]]: 0,
-            }
+            return field.dropped
+              ? {
+                  ...state,
+                  [field["field-name"]]: 0,
+                  [field["field-name"] + " dropped"]: 0,
+                }
+              : {
+                  ...state,
+                  [field["field-name"]]: 0,
+                }
           case "Radio":
             return {
               ...state,
@@ -19,21 +25,31 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
                 ? field["options"][0]
                 : "none-selected",
             }
+          case "Checkbox":
+            return {
+              ...state,
+              [field["field-name"]]: "",
+            }
           case "Switch":
             return {
               ...state,
               [field["field-name"]]: false,
             }
-          default:
+          case "Slider":
             return {
               ...state,
+              [field["field-name"]]: 0,
             }
+          default:
+            return state
         }
       }
-      return {
-        ...state,
-        [field as string]: "",
-      }
+      if (typeof field === "string")
+        return {
+          ...state,
+          [field]: "",
+        }
+      return state
     }, {}) // initializes the form state
 
 export const createValidateObject = (fields: Fields) => {

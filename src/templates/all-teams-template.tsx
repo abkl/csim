@@ -4,16 +4,17 @@ import Link from "../components/primatives/link"
 import ReactTable from "react-table"
 import foldableTable from "react-table/lib/hoc/foldableTable"
 import "react-table/react-table.css"
-import { RootContext } from "../contexts/root-context"
+import { RootContext, RootState } from "../contexts/root-context"
+import Button from "../components/primatives/button"
 const FTBL = foldableTable<TeamObject>(ReactTable)
-export default ({
+export default function AllTeamsTemplate({
   pageContext: { teams },
 }: {
   pageContext: {
     teams: TeamObject[]
   }
-}) => {
-  const { state } = useContext(RootContext)
+}) {
+  const { state, changeState } = useContext(RootContext)
   return (
     <div>
       <h1>Teams</h1>
@@ -30,11 +31,52 @@ export default ({
             foldable: true,
             columns: [
               {
+                Header: "Add to Picklist",
+                accessor: "team_number",
+                Cell(props: { value: string }) {
+                  return (
+                    <>
+                      {!state.pickList.includes(parseInt(props.value)) ? (
+                        <>
+                          <Button
+                            onClick={() =>
+                              changeState((s: RootState) => ({
+                                ...s,
+                                pickList: [...s.pickList, props.value],
+                              }))
+                            }
+                            css={{ marginRight: "1%" }}
+                          >
+                            + to Picklist
+                          </Button>
+                        </>
+                      ) : (
+                        <Button
+                          onClick={() =>
+                            changeState(
+                              (s: RootState): RootState => ({
+                                ...s,
+                                pickList: s.pickList.filter(
+                                  t => t !== parseInt(props.value)
+                                ),
+                              })
+                            )
+                          }
+                        >
+                          - from Picklist
+                        </Button>
+                      )}
+                    </>
+                  )
+                },
+                minWidth: 117,
+              },
+              {
                 Header: "Team Number",
                 accessor: "team_number",
-                Cell: (props: { value: string }) => (
-                  <Link to={`/teams/${props.value}`}>{props.value}</Link>
-                ),
+                Cell(props: { value: string }) {
+                  return <Link to={`/teams/${props.value}`}>{props.value}</Link>
+                },
               },
               {
                 Header: "Nickname",
@@ -48,23 +90,25 @@ export default ({
                   !filter.value || filter.value === "all"
                     ? row
                     : row.filter(team => team.competition === filter.value),
-                Filter: ({
+                Filter({
                   filter,
                   onChange,
                 }: {
                   filter: { value: string }
                   onChange: (a: any) => void
-                }) => (
-                  <select
-                    onChange={event => onChange(event.target.value)}
-                    style={{ width: "100%" }}
-                    value={filter ? filter.value : "all"}
-                  >
-                    <option value="all">all</option>
-                    <option value="sfr">SFR</option>
-                    <option value="svr">SVR</option>
-                  </select>
-                ),
+                }) {
+                  return (
+                    <select
+                      onChange={event => onChange(event.target.value)}
+                      style={{ width: "100%" }}
+                      value={filter ? filter.value : "all"}
+                    >
+                      <option value="all">all</option>
+                      <option value="sfr">SFR</option>
+                      <option value="svr">SVR</option>
+                    </select>
+                  )
+                },
               },
             ],
           },
