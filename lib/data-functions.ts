@@ -1,5 +1,5 @@
-import { mean, standardDeviation } from "simple-statistics"
-import { fields, gameValues } from "./game-constants"
+import { mean, sampleStandardDeviation } from "simple-statistics"
+import { fields, gameValues } from "../src/utils/game-constants"
 // Types:
 interface TotalStats {
   totalMeans: {
@@ -8,15 +8,16 @@ interface TotalStats {
   totalStdDeviations: {
     [s: string]: number
   }
-  originalData: Score[]
 }
 type GameItem = "Cargo" | "Hatch Panel"
 export interface ScoresObj {
   "Robot Starting Platform": "level 1" | "level 2"
   "Leave Habitat": "TRUE" | "FALSE"
   "Habitat Return": "Did not return" | "level 1" | "level 2" | "level 3"
-  "Team Number": string | number
-  [s: string]: string | number
+  "Team Number": string
+  "Match Number": string
+  "Your Name": string
+  [s: string]: string
 }
 export interface Score {
   Cargo: number
@@ -24,11 +25,12 @@ export interface Score {
   "Sandstorm Cross": number
   "Habitat Return": number
   "Total Score": number
-  "Team Number": number
-  [s: string]: number
+  "Team Number": string
+  [s: string]: number | string
 }
 export interface MatchData {
-  "Team Number": string | number
+  "Team Number": string
+  "Match Number": string
   [s: string]: any
 }
 interface Stats {
@@ -37,15 +39,15 @@ interface Stats {
   "Points Scored": { mean: number; standardDeviation: number }
   [key: string]: { mean: number; standardDeviation: number }
 }
-
+export interface Teams {
+  [s: string]: {
+    matchData: MatchData[]
+    stats: Stats | {}
+  }
+}
 export interface TeamCollection {
   originalScores: Score[] | []
-  teams: {
-    [s: string]: {
-      matchData: MatchData[]
-      stats: Stats | {}
-    }
-  }
+  teams: Teams
 }
 
 // Convert Sheets data into Collection of Teams Objects Functions:
@@ -76,21 +78,16 @@ export const getGameItemKeyFromMatchDataKey = (
     ? keys.filter(key => RegExp(gameItem).test(key) && !/dropped/.test(key))
     : keys.filter(key => RegExp(gameItem).test(key) && /dropped/.test(key))
 
-const scoringFields = Object.keys(fields)
-  .map(key => fields[key])
-  .reduce((acc, val) => acc.concat(val), [])
-  .filter(f => typeof f === "object" && f.scoring === true)
-  .map(f => (typeof f === "object" ? f["field-name"] : f))
 export const calculateScore = (data: ScoresObj): Score => {
   const scoreCargo =
-    getGameItemKeyFromMatchDataKey(scoringFields, "Cargo")
+    getGameItemKeyFromMatchDataKey(Object.keys(data), "Cargo")
       .map(key => data[key])
-      .reduce((pv: number, cv: any) => pv + cv, 0) * gameValues.Cargo
-
+      .reduce((pv: number, cv) => pv + parseInt(cv, 10), 0) * gameValues.Cargo
   const scoreHatchPanel =
-    getGameItemKeyFromMatchDataKey(scoringFields, "Hatch Panel")
+    getGameItemKeyFromMatchDataKey(Object.keys(data), "Hatch Panel")
       .map(key => data[key])
-      .reduce((pv: number, cv: any) => pv + cv, 0) * gameValues["Hatch Panel"]
+      .reduce((pv: number, cv) => pv + parseInt(cv, 10), 0) *
+    gameValues["Hatch Panel"]
   const scoreHabitatReturn =
     // @ts-ignore
     gameValues["Habitat Return"][data["Habitat Return"]] || 0
@@ -100,12 +97,14 @@ export const calculateScore = (data: ScoresObj): Score => {
       ? gameValues["Sandstorm Cross"][data["Robot Starting Platform"]]
       : 0
   return {
+    "Match Number": data["Match Number"],
     Cargo: scoreCargo,
     "Hatch Panel": scoreHatchPanel,
     "Habitat Return": scoreHabitatReturn,
     "Sandstorm Cross": scoreSandstormCross,
     // @ts-ignore
-    "Team Number": parseInt(data["Team Number"]),
+    "Team Number": data["Team Number"],
+    "Scouter Name": data["Your Name"],
     "Total Score":
       scoreCargo + scoreHatchPanel + scoreSandstormCross + scoreHabitatReturn,
   }
@@ -128,24 +127,7 @@ export const collectMatchDataIntoTeamObj = (d: MatchData[]): TeamCollection =>
             },
             originalScores: [
               ...teamTotals.originalScores,
-              calculateScore(
-                scoringFields.reduce<ScoresObj>(
-                  (ogObj, key) => ({
-                    ...ogObj,
-                    [key]: matchData[key],
-                  }),
-                  {
-                    "Robot Starting Platform": "level 1",
-                    "Leave Habitat": "FALSE",
-                    "Number of Hatch Panels(Sandstorm)": 0,
-                    "Number of Cargo(Sandstorm)": 0,
-                    "Number of Hatch Panels(Teleop)": 0,
-                    "Number of Cargo(Teleop)": 0,
-                    "Habitat Return": "Did not return",
-                    "Team Number": matchData["Team Number"],
-                  }
-                )
-              ),
+              calculateScore(matchData as ScoresObj),
             ],
           }
         : {
@@ -155,24 +137,7 @@ export const collectMatchDataIntoTeamObj = (d: MatchData[]): TeamCollection =>
             },
             originalScores: [
               ...teamTotals.originalScores,
-              calculateScore(
-                scoringFields.reduce<ScoresObj>(
-                  (ogObj, key) => ({
-                    ...ogObj,
-                    [key]: matchData[key],
-                  }),
-                  {
-                    "Robot Starting Platform": "level 1",
-                    "Leave Habitat": "FALSE",
-                    "Number of Hatch Panels(Sandstorm)": 0,
-                    "Number of Cargo(Sandstorm)": 0,
-                    "Number of Hatch Panels(Teleop)": 0,
-                    "Number of Cargo(Teleop)": 0,
-                    "Habitat Return": "Did not return",
-                    "Team Number": matchData["Team Number"],
-                  }
-                )
-              ),
+              calculateScore(matchData as ScoresObj),
             ],
           }
     },
@@ -181,39 +146,67 @@ export const collectMatchDataIntoTeamObj = (d: MatchData[]): TeamCollection =>
       originalScores: [],
     }
   )
-
-// Calculate Statistics(individual means, stds, and zscores for each team) functions:
-export const calculateStatistics = (d: TeamCollection): TeamCollection => {
-  const calculateStats = (matchDataArray: MatchData[]) => {
-    const keysWithNumbers = Object.keys(matchDataArray[0]).filter(key =>
-      /Number/.test(key)
-    )
-    return keysWithNumbers.reduce((statisticsObj: any, key) => {
+export const calculateTotalStats = (scores: Score[]): TotalStats => {
+  const intermediateObj = scores.reduce(
+    (pv, cv) => {
       return {
-        ...statisticsObj,
-        [key]: {
-          mean: mean(
-            matchDataArray.map((md: MatchData) => parseInt(md[key], 10))
-          ),
-          standardDeviation: standardDeviation(
-            matchDataArray.map((md: MatchData) => parseInt(md[key], 10))
-          ),
-        },
+        Cargo: [...pv.Cargo, cv.Cargo],
+        "Hatch Panel": [...pv["Hatch Panel"], cv["Hatch Panel"]],
+        "Sandstorm Cross": [...pv["Sandstorm Cross"], cv["Sandstorm Cross"]],
+        "Habitat Return": [...pv["Habitat Return"], cv["Habitat Return"]],
+        "Total Score": [...pv["Total Score"], cv["Total Score"]],
       }
-    }, {})
-  }
-  const teams = Object.keys(d.teams).reduce((dWithStats, key) => {
-    return {
-      ...dWithStats,
-      [key]: {
-        ...d.teams[key],
-        stats: calculateStats(d.teams[key].matchData),
-      },
+    },
+    {
+      Cargo: [],
+      "Hatch Panel": [],
+      "Sandstorm Cross": [],
+      "Habitat Return": [],
+      "Total Score": [],
     }
-  }, {})
+  )
 
   return {
-    ...d,
-    teams,
+    totalMeans: {
+      Cargo: intermediateObj.Cargo.length > 0 ? mean(intermediateObj.Cargo) : 0,
+      "Hatch Panel":
+        intermediateObj["Hatch Panel"].length > 0
+          ? mean(intermediateObj["Hatch Panel"])
+          : 0,
+      "Sandstorm Cross":
+        intermediateObj["Sandstorm Cross"].length > 0
+          ? mean(intermediateObj["Sandstorm Cross"])
+          : 0,
+      "Habitat Return":
+        intermediateObj["Habitat Return"].length > 0
+          ? mean(intermediateObj["Habitat Return"])
+          : 0,
+      "Total Score":
+        intermediateObj["Total Score"].length > 0
+          ? mean(intermediateObj["Total Score"])
+          : 0,
+    },
+    totalStdDeviations: {
+      Cargo:
+        intermediateObj.Cargo.length > 0
+          ? sampleStandardDeviation(intermediateObj.Cargo)
+          : 0,
+      "Hatch Panel":
+        intermediateObj["Hatch Panel"].length > 0
+          ? sampleStandardDeviation(intermediateObj["Hatch Panel"])
+          : 0,
+      "Sandstorm Cross":
+        intermediateObj["Sandstorm Cross"].length > 0
+          ? sampleStandardDeviation(intermediateObj["Sandstorm Cross"])
+          : 0,
+      "Habitat Return":
+        intermediateObj["Habitat Return"].length > 0
+          ? sampleStandardDeviation(intermediateObj["Habitat Return"])
+          : 0,
+      "Total Score":
+        intermediateObj["Total Score"].length > 0
+          ? sampleStandardDeviation(intermediateObj["Total Score"])
+          : 0,
+    },
   }
 }

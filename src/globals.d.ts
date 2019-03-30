@@ -14,3 +14,6 @@ declare module "react-table/lib/hoc/foldableTable" {
     a: React.ComponentType
   ): React.ComponentType<Partial<FoldableTableProps<D>>>
 }
+declare module "uuid/v4" {
+  export default function uuid(): string
+}

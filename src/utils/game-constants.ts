@@ -31,7 +31,7 @@ export type FieldType =
     }
   | {
       "field-name": string
-      type: "Radio"
+      type: "Radio" | "Checkbox"
       options: string[]
       [s: string]: string | string[] | boolean
       scoring: boolean
@@ -39,6 +39,7 @@ export type FieldType =
   | {
       "field-name": string
       type: "Slider"
+      min?: number
       max: number
       step: number
       scoring: boolean
@@ -47,20 +48,10 @@ export type FieldType =
       }
     }
 export interface Fields {
-  "Pre-game": FieldType[]
-  Sandstorm: FieldType[]
-  Teleop: FieldType[]
-  "End game": FieldType[]
   [s: string]: FieldType[]
 }
 export const fields: Fields = {
   "Pre-game": [
-    {
-      "field-name": "Event Code",
-      type: "Radio",
-      options: ["sfr", "svr", "practice"],
-      scoring: false,
-    },
     "Your Name",
     "Team Number",
     "Match Number",
@@ -184,6 +175,16 @@ export const fields: Fields = {
       options: ["Did not return", "level 1", "level 2", "level 3"],
       scoring: true,
     },
+    {
+      "field-name": "Habitat Assist(Buddy Climb)",
+      type: "Radio",
+      options: [
+        "Did not help another robot climb",
+        "Helped another robot to lvl 2",
+        "Helped another robot to lvl 3",
+      ],
+      scoring: true,
+    },
     { "field-name": "Rocket Completion", type: "Switch", scoring: false },
     {
       "field-name": "Robot Deadtime(seconds)",
@@ -203,6 +204,7 @@ export const fields: Fields = {
       "field-name": "Driver Skill",
       type: "Slider",
       scoring: false,
+      min: 1,
       max: 4,
       step: 1,
       marks: {
@@ -212,7 +214,6 @@ export const fields: Fields = {
         "4": "4",
       },
     },
-    "Total Match Score Number",
     "Comments",
   ],
 }

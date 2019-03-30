@@ -25,6 +25,11 @@ export const initiallizeFormState = (fields: Fields): { [s: string]: any } =>
                 ? field["options"][0]
                 : "none-selected",
             }
+          case "Checkbox":
+            return {
+              ...state,
+              [field["field-name"]]: "",
+            }
           case "Switch":
             return {
               ...state,

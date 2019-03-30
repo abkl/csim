@@ -1,7 +1,8 @@
-import { Fields } from "../src/utils/game-constants"
-import { fetchTeamsFromTBA } from "./apiFetches"
-// run using ts-node, use: ` ts-node -O '{"module": "commonjs"}' ./transform-fields.ts  `
-const fields: Fields = {
+import React from "react"
+import css from "@emotion/css"
+import Form from "../components/form-components/form-template"
+import { Fields } from "../utils/game-constants"
+export const fields: Fields = {
   General: [
     "Scouter Name",
     "Team Number",
@@ -77,21 +78,23 @@ const fields: Fields = {
     },
   ],
 }
-const transfromFields = Object.keys(fields)
-  .map(key => fields[key])
-  .reduce((acc, val) => acc.concat(val), [])
-  .map(fieldKey =>
-    typeof fieldKey === "string"
-      ? fieldKey
-      : fieldKey.type === "Number"
-      ? fieldKey.dropped
-        ? `${fieldKey["field-name"]}\n   ${fieldKey["field-name"]} dropped`
-        : fieldKey["field-name"]
-      : fieldKey["field-name"]
+export default function PitScoutingForm() {
+  return (
+    <>
+      <h1
+        css={css`
+          text-align: center;
+        `}
+      >
+        Pit Scouting Form
+      </h1>
+      <Form
+        storageKey="pit-scouting"
+        fields={fields}
+        submitUrl={
+          "https://script.google.com/macros/s/AKfycbzpOJMML-rkyz_HB-GRstlAke0OayBeMEFVW21a04lpD9TJrKc/exec"
+        }
+      />
+    </>
   )
-  .reduce(
-    (p, c) => `${p}
-   ${c}`,
-    ""
-  )
-console.log(transfromFields)
+}

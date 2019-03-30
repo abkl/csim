@@ -88,9 +88,13 @@ export default function Counter(props: CounterProps) {
         paddingBottom: "5%",
         justifyContent: "center",
         alignItems: "center",
+        maxWidth: "300px",
+        width: "100%",
+        alignSelf: "center",
+        textAlign: "left",
       }}
     >
-      <label>{name}:</label>
+      <label css={{ alignSelf: "flex-start" }}>{name}:</label>
       {dropped ? (
         <div
           css={css`

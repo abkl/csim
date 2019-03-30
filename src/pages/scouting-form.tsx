@@ -19,7 +19,13 @@ const ScoutingFormPage = () => (
     >
       U means upper, L means lower
     </p>
-    <Form fields={fields} />
+    <Form
+      storageKey="match-scouting"
+      fields={fields}
+      submitUrl={
+        "https://script.google.com/macros/s/AKfycbxd9o5VOvlJT4SqTeJTAoUmT9WNxmagGafiTARnFCyU7bgPlcnR/exec"
+      }
+    />
   </>
 )
 export default ScoutingFormPage

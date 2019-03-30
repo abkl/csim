@@ -7,6 +7,7 @@ const DisplayValues = ({ values }: { values: { [s: string]: string } }) => (
       property: key,
       value: values[key],
     }))}
+    defaultPageSize={10}
     showPagination
     css={{
       width: "100%",

@@ -6,6 +6,7 @@ interface FormSliderProps {
   onChange: (v: any) => void
   name: string
   value: string
+  min?: number
   max: number
   step: number
   marks: {
@@ -20,6 +21,7 @@ export default function FormSlider({
   max,
   step,
   marks,
+  min,
 }: FormSliderProps) {
   return (
     <div
@@ -36,6 +38,7 @@ export default function FormSlider({
         value={parseInt(value)}
         css={{ margin: "auto", width: "50%" }}
         max={max}
+        min={min || 0}
         marks={marks}
         step={step}
       />

@@ -51,9 +51,9 @@ const AppBar = ({ siteTitle }: HeaderProps) => (
         align-self: flex-end;
       `}
     >
-      <HeaderLinks to="/scouting-form"> Scouting Form </HeaderLinks>
-      <HeaderLinks to="/teams"> Teams </HeaderLinks>
-      <HeaderLinks to="/picklist"> Pick List</HeaderLinks>
+      <HeaderLinks to="/scouting-form"> (Scouting) </HeaderLinks>
+      <HeaderLinks to="/pit-scouting"> (Pit) </HeaderLinks>
+      <HeaderLinks to="/offline-data"> (Offline) </HeaderLinks>
     </div>
   </div>
 )
